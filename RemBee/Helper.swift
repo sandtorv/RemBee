@@ -12,11 +12,16 @@ import Parse
 
 var itemsName: [String] = [String]()
 var itemsStatus: [Bool] = [Bool]()
-var listID: String = String()
+var listID: String = ""
 
 func storeData(){
     println(listID)
-    updateList(listID)
+    println("Count: \(count(listID))")
+    if(count(listID) > 5){
+        updateList(listID)
+    } else {
+        saveList()
+    }
 }
 
 func saveList(){
@@ -47,6 +52,8 @@ func fetchList(){
                     itemsName = object["itemsName"] as! [String]
                     itemsStatus = object["itemsStatus"] as! [Bool]
                     listID = object.objectId!
+                    println("listID: \(listID), itemsName: \(itemsName), itemsStatus: \(itemsStatus)")
+                    NSNotificationCenter.defaultCenter().postNotificationName("refreshTable", object: nil)
                 }
             }
         } else {
@@ -59,13 +66,23 @@ func fetchList(){
 func updateList(objectID: String){
     var query = PFQuery(className:"TodoList")
     query.getObjectInBackgroundWithId(listID) {
-        (gameScore: PFObject?, error: NSError?) -> Void in
+        (object: PFObject?, error: NSError?) -> Void in
         if error != nil {
             println(error)
-        } else if let gameScore = gameScore {
-            gameScore["itemsName"] = itemsName
-            gameScore["itemsStatus"] = itemsStatus
-            gameScore.saveInBackground()
+        } else if let object = object {
+            object["itemsName"] = itemsName
+            object["itemsStatus"] = itemsStatus
+            object.saveInBackground()
         }
     }
+}
+
+// Delay Helper
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
 }

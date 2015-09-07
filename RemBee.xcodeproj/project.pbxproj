@@ -32,6 +32,7 @@
 		52A2409D1B9B762700EC5A61 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A240931B9B762700EC5A61 /* Security.framework */; };
 		52A2409E1B9B762700EC5A61 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A240941B9B762700EC5A61 /* StoreKit.framework */; };
 		52A2409F1B9B762700EC5A61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A240951B9B762700EC5A61 /* SystemConfiguration.framework */; };
+		52EC33991B9D8851001DBA04 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC33981B9D8851001DBA04 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		52A240931B9B762700EC5A61 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		52A240941B9B762700EC5A61 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		52A240951B9B762700EC5A61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		52EC33981B9D8851001DBA04 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				52A2405D1B9B74CC00EC5A61 /* AppDelegate.swift */,
 				523FFBB51B9C7D8C00F03D17 /* Helper.swift */,
 				52A2405F1B9B74CC00EC5A61 /* ViewController.swift */,
+				52EC33981B9D8851001DBA04 /* SettingsViewController.swift */,
 				52A240611B9B74CC00EC5A61 /* Main.storyboard */,
 				52A240641B9B74CC00EC5A61 /* Images.xcassets */,
 				52A240661B9B74CC00EC5A61 /* LaunchScreen.xib */,
@@ -300,6 +303,7 @@
 				52A240601B9B74CC00EC5A61 /* ViewController.swift in Sources */,
 				52A2405E1B9B74CC00EC5A61 /* AppDelegate.swift in Sources */,
 				523FFBB61B9C7D8C00F03D17 /* Helper.swift in Sources */,
+				52EC33991B9D8851001DBA04 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             clientKey: "I4NrDmVMbGoaN8dReQ3Ai4eqRwSait9VXbS2peHM")
         
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        if(PFUser.currentUser() != nil){
+            fetchList()
+        }
         return true
     }
 
