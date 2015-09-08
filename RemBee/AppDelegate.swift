@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         if(PFUser.currentUser() != nil){
             fetchList()
+            PFUser.currentUser()?.fetch()
         }
         return true
     }

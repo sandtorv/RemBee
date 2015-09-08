@@ -14,6 +14,10 @@ var itemsName: [String] = [String]()
 var itemsStatus: [Bool] = [Bool]()
 var listID: String = ""
 
+func textFieldShouldReturn(textField: UITextField) -> Bool {
+    return false
+}
+
 func storeData(){
     println(listID)
     println("Count: \(count(listID))")

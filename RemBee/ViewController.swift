@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UITableViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
     
     let textCellIdentifier = "Cell"
@@ -49,17 +49,29 @@ class ViewController: UIViewController, UITableViewDelegate, PFLogInViewControll
     }
     
     @IBAction func addItem(sender: AnyObject) {
-        var alert = UIAlertController(title: "Add RemBee item", message: "Type in what you need to RemBee!", preferredStyle: .Alert)
+        var alert = UIAlertController(title: "Add new RemBee", message: "What do you need to RemBee?", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.placeholder = "RemBee"
             textField.autocapitalizationType = .Sentences
             textField.autocorrectionType = .Default
+            textField.delegate = self
+            textField.returnKeyType = .Next
         })
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: { (action) -> Void in
         }))
         
-        alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Add another", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as! UITextField
+            if(count(textField.text) > 0){
+                self.saveItem("\(textField.text)")
+                storeData()
+            }
+            self.reloadTableView()
+            self.addItem(self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Save & close", style: .Cancel, handler: { (action) -> Void in
             let textField = alert.textFields![0] as! UITextField
             if(count(textField.text) > 0){
                 self.saveItem("\(textField.text)")
@@ -67,6 +79,7 @@ class ViewController: UIViewController, UITableViewDelegate, PFLogInViewControll
             }
             self.reloadTableView()
         }))
+        
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
@@ -135,6 +148,11 @@ class ViewController: UIViewController, UITableViewDelegate, PFLogInViewControll
         } else{
             cell.textLabel!.textColor = UIColor.blackColor()
         }
+        
+        if(row % 2 == 0){
+            cell.backgroundColor = UIColor(red: 0.99, green: 0.99, blue: 0.99, alpha: 1)
+        }
+        
         cell.textLabel!.attributedText = NSAttributedString(string:itemsName[row], attributes: attributes)
         return cell
     }
@@ -162,6 +180,7 @@ class ViewController: UIViewController, UITableViewDelegate, PFLogInViewControll
 
     
     // MARK: Parse Login
+    
     func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
         
         if (!username.isEmpty || !password.isEmpty) {

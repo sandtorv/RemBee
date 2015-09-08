@@ -44,15 +44,15 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="add" id="q68-XD-LOU">
-                            <connections>
-                                <action selector="addItem:" destination="BYZ-38-t0r" id="Dkc-Uc-m0c"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="O5j-sU-YDi"/>
                         <barButtonItem title="Edit" style="plain" id="Ta7-kE-Caq">
                             <connections>
                                 <action selector="editList:" destination="BYZ-38-t0r" id="FVM-Fh-dQC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="O5j-sU-YDi"/>
+                        <barButtonItem systemItem="add" id="q68-XD-LOU">
+                            <connections>
+                                <action selector="addItem:" destination="BYZ-38-t0r" id="Dkc-Uc-m0c"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -85,42 +85,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username: Blabla" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQt-ge-8jX">
-                                <rect key="frame" x="16" y="72" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: Blabla" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQO-R0-di0">
-                                <rect key="frame" x="16" y="101" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="kp9-6g-Mf3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="eCT-uN-tpH">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eCT-uN-tpH" id="Qkx-Ch-tmv">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="rj1-UX-0LZ" id="Tc2-Pj-TX6"/>
+                                    <outlet property="delegate" destination="rj1-UX-0LZ" id="dom-gr-Mze"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KQt-ge-8jX" firstAttribute="leading" secondItem="mBX-3r-IuV" secondAttribute="leadingMargin" id="5B8-2p-P0D"/>
-                            <constraint firstItem="KQt-ge-8jX" firstAttribute="top" secondItem="uqO-y6-qUk" secondAttribute="bottom" constant="8" id="EpE-qm-J54"/>
-                            <constraint firstItem="XQO-R0-di0" firstAttribute="trailing" secondItem="mBX-3r-IuV" secondAttribute="trailingMargin" id="Iwo-Aq-Ymg"/>
-                            <constraint firstItem="XQO-R0-di0" firstAttribute="top" secondItem="KQt-ge-8jX" secondAttribute="bottom" constant="8" id="eZh-nj-Ww1"/>
-                            <constraint firstItem="KQt-ge-8jX" firstAttribute="trailing" secondItem="mBX-3r-IuV" secondAttribute="trailingMargin" id="peq-79-7yL"/>
-                            <constraint firstItem="XQO-R0-di0" firstAttribute="leading" secondItem="mBX-3r-IuV" secondAttribute="leadingMargin" id="qHr-Qu-lF3"/>
+                            <constraint firstItem="YRB-eO-Mua" firstAttribute="top" secondItem="kp9-6g-Mf3" secondAttribute="bottom" constant="-44" id="ZS9-ws-aw2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kp9-6g-Mf3" secondAttribute="trailing" constant="-16" id="eNM-gC-vb5"/>
+                            <constraint firstItem="kp9-6g-Mf3" firstAttribute="leading" secondItem="mBX-3r-IuV" secondAttribute="leadingMargin" constant="-16" id="q0c-rE-1JL"/>
+                            <constraint firstItem="kp9-6g-Mf3" firstAttribute="top" secondItem="uqO-y6-qUk" secondAttribute="bottom" constant="-64" id="vXy-Dx-e7S"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="VLV-QF-1bx"/>
-                        <barButtonItem title="Log out" id="ztj-Kd-yIT">
-                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="logOut:" destination="rj1-UX-0LZ" id="hjI-AJ-df5"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="email" destination="XQO-R0-di0" id="7TK-PL-qq5"/>
-                        <outlet property="username" destination="KQt-ge-8jX" id="nXo-Zt-S9V"/>
+                        <outlet property="tableView" destination="kp9-6g-Mf3" id="bMA-Yh-fpo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNl-2d-hD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,10 +129,16 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WRO-fC-VSu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="barTintColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Hri-d1-yyU">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qwZ-0k-epS"/>
